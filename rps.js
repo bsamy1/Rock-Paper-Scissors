@@ -16,4 +16,22 @@ function getComputerChoice(){
     console.log(choice);
 }
 
+function getHumanChoice(){
+    let humanChoice = prompt("What is your choice? \n[1] Rock \n[2] Scissors \n[3] Paper");
+    if (humanChoice == 1){
+        humanChoice = "Rock";
+    }else if(humanChoice == 2){
+        humanChoice = "Scissors";
+    }else if(humanChoice == 3){
+        humanChoice = "Paper";
+    }
+    else{
+        humanChoice = "Error";
+    }
+    
+    console.log(humanChoice);
+}
+
+
 getComputerChoice();
+getHumanChoice();
