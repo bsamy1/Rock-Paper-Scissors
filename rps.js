@@ -1,37 +1,56 @@
+// Track scores
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice(){
     let num = Math.floor(Math.random() * 10 + 1);
     console.log(num); 
-    let choice = "";
+    let computerChoice = "";
     // Rock = 1-3; Scissors = 4-6; Paper = 7-9
     if (num>=1 && num <= 3){
-        choice = "Rock";
+        computerChoice = "rock";
     }else if(num>=4 && num <= 6){
-        choice = "Scissors";
+        computerChoice = "scissors";
     }else if(num>=7 && num<= 9){
-        choice = "Paper";
+        computerChoice = "paper";
     }
     else{
-        choice = "Error";
+        computerChoice = "error";
     }
-    console.log(choice);
+    
+    return computerChoice;
 }
 
 function getHumanChoice(){
-    let humanChoice = prompt("What is your choice? \n[1] Rock \n[2] Scissors \n[3] Paper");
-    if (humanChoice == 1){
-        humanChoice = "Rock";
-    }else if(humanChoice == 2){
-        humanChoice = "Scissors";
-    }else if(humanChoice == 3){
-        humanChoice = "Paper";
-    }
-    else{
-        humanChoice = "Error";
-    }
-    
-    console.log(humanChoice);
+    let humanChoice = prompt("What is your choice? \n Rock, Paper, Scissors");
+    humanChoice.toLowerCase();
+    return humanChoice;
 }
 
+function playRound(humanChoice, computerChoice) {
+  if(humanChoice == "rock" && computerChoice == "scissors"){
+    humanScore++;
+  }else if (humanChoice == "paper" && computerChoice == "rock"){
+    humanScore++;
+  }else if (humanChoice == "scissors" && computerChoice == "paper"){
+    humanScore++
+  }else if(computerChoice == "rock" && humanChoice == "scissors"){
+    computerScore++;
+  }else if(computerChoice == "paper" && humanChoice == "rock"){
+    computerScore++;
+  }else if(computerChoice == "scissors" && computerChoice == "paper"){
+    computerScore++;
+  }else{
+    console.log("it was a tie");
+  }
+}
 
-getComputerChoice();
-getHumanChoice();
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+playRound(humanSelection, computerSelection);
+console.log(humanSelection);
+console.log(computerSelection);
+console.log(humanScore);
+console.log(computerScore);
+
+
